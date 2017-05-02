@@ -1,5 +1,5 @@
 {
-  "name": "request-fetch",
+  "name": "fetch-to-request",
   "version": "1.0.0",
   "description": "Browser fetch wrapper",
   "main": "dist/request.min.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/salikovpro/request-fetch.git"
+    "url": "git+https://github.com/salikovpro/fetch-to-request.git"
   },
   "keywords": [
     "fetch",
@@ -20,9 +20,9 @@
   "author": "Iakov Salikov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/salikovpro/request-fetch/issues"
+    "url": "https://github.com/salikovpro/fetch-to-request/issues"
   },
-  "homepage": "https://github.com/salikovpro/request-fetch#readme",
+  "homepage": "https://github.com/salikovpro/fetch-to-request#readme",
   "dependencies": {
     "babel-polyfill": "^6.23.0"
   },
