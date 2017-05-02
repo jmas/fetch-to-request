@@ -1,9 +1,10 @@
-import 'babel-polyfill'
+import 'promise-polyfill'
+import 'whatwg-fetch'
 
 export const headers: Object = {
     'Accept': 'application/json, text/plain, */*',
     'Content-Type': 'application/json'
-};
+}
 
 export function handleResponse(response: Object): Promise {
     return response.status > 399 ? Promise.reject({

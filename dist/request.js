@@ -35,7 +35,9 @@ var _promise2 = _interopRequireDefault(_promise);
 
 exports.handleResponse = handleResponse;
 
-require('babel-polyfill');
+require('promise-polyfill');
+
+require('whatwg-fetch');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

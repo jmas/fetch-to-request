@@ -1,12 +1,12 @@
 {
   "name": "fetch-to-request",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Browser fetch wrapper",
   "main": "dist/request.min.js",
   "scripts": {
     "dist:default": "gulp dist:default",
     "dist:minify": "gulp dist:minify",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -24,9 +24,12 @@
   },
   "homepage": "https://github.com/salikovpro/fetch-to-request#readme",
   "dependencies": {
-    "babel-polyfill": "^6.23.0"
+    "eslint-plugin-import": "^2.2.0",
+    "promise-polyfill": "^6.0.2",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-plugin-typecheck": "^3.9.0",
@@ -34,6 +37,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^3.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.1.2"
   }
