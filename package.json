@@ -1,6 +1,6 @@
 {
   "name": "fetch-to-request",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Browser fetch wrapper",
   "main": "dist/request.min.js",
   "scripts": {
@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/salikovpro/fetch-to-request#readme",
   "dependencies": {
-    "eslint-plugin-import": "^2.2.0",
     "promise-polyfill": "^6.0.2",
     "whatwg-fetch": "^2.0.3"
   },
@@ -35,6 +34,7 @@
     "babel-plugin-typecheck": "^3.9.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "eslint-plugin-import": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-eslint": "^3.0.1",

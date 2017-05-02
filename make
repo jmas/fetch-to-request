@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-    echo './run <default|minify|test>'
+    echo './make <default|minify|test>'
     exit
 fi
 
@@ -14,6 +14,6 @@ elif [ $1 == 'test' ]; then
 	npm run dist:default
     npm run dist:minify
 else
-    echo './run <default|minify|test>'
+    echo './make <default|minify|test>'
     exit
 fi
