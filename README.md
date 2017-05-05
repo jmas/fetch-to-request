@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/salikovpro/fetch-to-request.svg?branch=master)](https://travis-ci.org/salikovpro/fetch-to-request)
+[![Build Status](https://travis-ci.org/salikovpro/fetch-to-request.svg?branch=master)](https://travis-ci.org/salikovpro/fetch-to-request) [![npm version](https://badge.fury.io/js/fetch-to-request.svg)](https://badge.fury.io/js/fetch-to-request)
 
 # [fetch-to-request](https://www.npmjs.com/package/fetch-to-request)
 Browser fetch wrapper
