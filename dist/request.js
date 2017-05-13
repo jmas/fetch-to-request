@@ -61,11 +61,6 @@ function handleResponse(response) {
 
     return _ref(response.json().then(function (data) {
         return response.status > 399 ? _promise2.default.reject(data) : _promise2.default.resolve(data);
-    }).catch(function (error) {
-        return _promise2.default.reject({
-            status: response.status,
-            message: error
-        });
     }));
 }
 
