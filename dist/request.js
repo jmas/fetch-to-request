@@ -47,21 +47,20 @@ var headers = exports.headers = {
 };
 
 function handleResponse(response) {
-    function _ref(_id) {
-        if (!(_id instanceof _promise2.default)) {
-            throw new TypeError('Function "handleResponse" return value violates contract.\n\nExpected:\nPromise\n\nGot:\n' + _inspect(_id));
-        }
-
-        return _id;
-    }
-
     if (!(response instanceof Object)) {
         throw new TypeError('Value of argument "response" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(response));
     }
 
-    return _ref(response.json().then(function (data) {
-        return response.status > 399 ? _promise2.default.reject(data) : _promise2.default.resolve(data);
-    }));
+    return new _promise2.default(function (resolve, reject) {
+        response.json().then(function (data) {
+            return response.status > 399 ? reject(data) : resolve(data);
+        }).catch(function () {
+            return reject({
+                status: response.status,
+                message: 'Can\'t parse JSON.'
+            });
+        });
+    });
 }
 
 var request = function () {

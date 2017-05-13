@@ -7,8 +7,14 @@ export const headers: Object = {
 }
 
 export function handleResponse(response: Object): Promise {
-    return response.json()
-        .then(data => response.status > 399 ? Promise.reject(data): Promise.resolve(data))
+    return new Promise((resolve, reject) => {
+        response.json()
+            .then(data => response.status > 399 ? reject(data): resolve(data))
+            .catch(() => reject({
+                status: response.status,
+                message: `Can't parse JSON.`
+            }))
+    })
 }
 
 export default class request {
