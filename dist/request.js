@@ -59,10 +59,7 @@ function handleResponse(response) {
         throw new TypeError('Value of argument "response" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(response));
     }
 
-    return _ref(response.status > 399 ? _promise2.default.reject({
-        status: response.status,
-        message: response.statusText
-    }) : _promise2.default.resolve(response.json()));
+    return _ref(response.status > 399 ? _promise2.default.reject(response.json()) : _promise2.default.resolve(response.json()));
 }
 
 var request = function () {

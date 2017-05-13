@@ -7,10 +7,7 @@ export const headers: Object = {
 }
 
 export function handleResponse(response: Object): Promise {
-    return response.status > 399 ? Promise.reject({
-        status: response.status,
-        message: response.statusText
-    }) : Promise.resolve(response.json())
+    return response.status > 399 ? Promise.reject(response.json()) : Promise.resolve(response.json())
 }
 
 export default class request {
