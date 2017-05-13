@@ -1,6 +1,6 @@
 {
   "name": "fetch-to-request",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Browser fetch wrapper",
   "main": "dist/request.min.js",
   "scripts": {
