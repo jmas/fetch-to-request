@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.headers = undefined;
+exports.FetchToRequest = exports.headers = undefined;
 
 var _keys = require('babel-runtime/core-js/object/keys');
 
@@ -69,18 +69,18 @@ function handleResponse(response) {
     });
 }
 
-var FetchToRequest = function () {
+var FetchToRequest = exports.FetchToRequest = function () {
     function FetchToRequest() {
-        var fetchOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         (0, _classCallCheck3.default)(this, FetchToRequest);
 
-        if (!(fetchOptions instanceof Object)) {
-            throw new TypeError('Value of argument "fetchOptions" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(fetchOptions));
+        if (!(options instanceof Object)) {
+            throw new TypeError('Value of argument "options" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(options));
         }
 
         this._options = (0, _extends3.default)({
             headers: headers
-        }, fetchOptions);
+        }, options);
     }
 
     (0, _createClass3.default)(FetchToRequest, [{
@@ -246,7 +246,7 @@ var FetchToRequest = function () {
     return FetchToRequest;
 }();
 
-exports.default = FetchToRequest;
+exports.default = new FetchToRequest();
 
 function _inspect(input, depth) {
     var maxDepth = 4;

@@ -23,12 +23,12 @@ export function handleResponse(response: Object): Promise {
     })
 }
 
-export default class FetchToRequest {
-    constructor(fetchOptions: Object = {}) {
+export class FetchToRequest {
+    constructor(options: Object = {}) {
         this._options = {
             headers,
-            ...fetchOptions,
-        };
+            ...options,
+        }
     }
 
     get(url: string = '/', options: Object = {}): Promise {
@@ -74,3 +74,5 @@ export default class FetchToRequest {
         }).then(response => handleResponse(response))
     }
 }
+
+export default new FetchToRequest();
