@@ -9,11 +9,7 @@ export const headers: Object = {
 export function handleResponse(response: Object): Promise {
     return new Promise((resolve, reject) => {
         response.json()
-            .then(data => response.status > 399 ? reject({ error: {
-                status: response.status,
-                message: response.statusText,
-                errors: data,
-            } }): resolve({ data }))
+            .then(data => response.status > 399 ? reject(data): resolve(data))
             .catch(() => reject({
                 error: {
                     status: response.status,

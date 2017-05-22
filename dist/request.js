@@ -53,11 +53,7 @@ function handleResponse(response) {
 
     return new _promise2.default(function (resolve, reject) {
         response.json().then(function (data) {
-            return response.status > 399 ? reject({ error: {
-                    status: response.status,
-                    message: response.statusText,
-                    errors: data
-                } }) : resolve({ data: data });
+            return response.status > 399 ? reject(data) : resolve(data);
         }).catch(function () {
             return reject({
                 error: {
