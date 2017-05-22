@@ -53,27 +53,41 @@ function handleResponse(response) {
 
     return new _promise2.default(function (resolve, reject) {
         response.json().then(function (data) {
-            return response.status > 399 ? reject(data) : resolve(data);
+            return response.status > 399 ? reject({ error: {
+                    status: response.status,
+                    message: response.statusText,
+                    errors: data
+                } }) : resolve({ data: data });
         }).catch(function () {
             return reject({
-                status: response.status,
-                message: 'Can\'t parse JSON.'
+                error: {
+                    status: response.status,
+                    message: 'Unnable to parse response body'
+                }
             });
         });
     });
 }
 
-var request = function () {
-    function request() {
-        (0, _classCallCheck3.default)(this, request);
+var _class = function () {
+    function _class() {
+        var fetchOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+        (0, _classCallCheck3.default)(this, _class);
+
+        if (!(fetchOptions instanceof Object)) {
+            throw new TypeError('Value of argument "fetchOptions" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(fetchOptions));
+        }
+
+        this._options = (0, _extends3.default)({
+            headers: headers
+        }, fetchOptions);
     }
 
-    (0, _createClass3.default)(request, null, [{
+    (0, _createClass3.default)(_class, [{
         key: 'get',
         value: function get() {
             var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
-
-            var _headers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+            var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
             function _ref2(_id2) {
                 if (!(_id2 instanceof _promise2.default)) {
@@ -87,14 +101,13 @@ var request = function () {
                 throw new TypeError('Value of argument "url" violates contract.\n\nExpected:\nstring\n\nGot:\n' + _inspect(url));
             }
 
-            if (!(_headers instanceof Object)) {
-                throw new TypeError('Value of argument "_headers" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(_headers));
+            if (!(options instanceof Object)) {
+                throw new TypeError('Value of argument "options" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(options));
             }
 
-            return _ref2(fetch(url, {
-                headers: (0, _extends3.default)({}, headers, _headers),
+            return _ref2(window.fetch(url, (0, _extends3.default)({}, this._options, options, {
                 method: 'GET'
-            }).then(function (response) {
+            })).then(function (response) {
                 return handleResponse(response);
             }));
         }
@@ -102,8 +115,7 @@ var request = function () {
         key: 'delete',
         value: function _delete() {
             var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
-
-            var _headers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+            var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
             function _ref3(_id3) {
                 if (!(_id3 instanceof _promise2.default)) {
@@ -117,14 +129,13 @@ var request = function () {
                 throw new TypeError('Value of argument "url" violates contract.\n\nExpected:\nstring\n\nGot:\n' + _inspect(url));
             }
 
-            if (!(_headers instanceof Object)) {
-                throw new TypeError('Value of argument "_headers" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(_headers));
+            if (!(options instanceof Object)) {
+                throw new TypeError('Value of argument "options" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(options));
             }
 
-            return _ref3(fetch(url, {
-                headers: (0, _extends3.default)({}, headers, _headers),
+            return _ref3(window.fetch(url, (0, _extends3.default)({}, this._options, options, {
                 method: 'DELETE'
-            }).then(function (response) {
+            })).then(function (response) {
                 return handleResponse(response);
             }));
         }
@@ -133,8 +144,7 @@ var request = function () {
         value: function post() {
             var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
             var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-            var _headers = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+            var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
             function _ref4(_id4) {
                 if (!(_id4 instanceof _promise2.default)) {
@@ -152,15 +162,14 @@ var request = function () {
                 throw new TypeError('Value of argument "data" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(data));
             }
 
-            if (!(_headers instanceof Object)) {
-                throw new TypeError('Value of argument "_headers" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(_headers));
+            if (!(options instanceof Object)) {
+                throw new TypeError('Value of argument "options" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(options));
             }
 
-            return _ref4(fetch(url, {
+            return _ref4(window.fetch(url, (0, _extends3.default)({}, this._options, options, {
                 body: (0, _stringify2.default)(data),
-                headers: (0, _extends3.default)({}, headers, _headers),
                 method: 'POST'
-            }).then(function (response) {
+            })).then(function (response) {
                 return handleResponse(response);
             }));
         }
@@ -169,8 +178,7 @@ var request = function () {
         value: function put() {
             var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
             var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-            var _headers = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+            var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
             function _ref5(_id5) {
                 if (!(_id5 instanceof _promise2.default)) {
@@ -188,15 +196,15 @@ var request = function () {
                 throw new TypeError('Value of argument "data" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(data));
             }
 
-            if (!(_headers instanceof Object)) {
-                throw new TypeError('Value of argument "_headers" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(_headers));
+            if (!(options instanceof Object)) {
+                throw new TypeError('Value of argument "options" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(options));
             }
 
-            return _ref5(fetch(url, {
-                body: (0, _stringify2.default)(data),
-                headers: (0, _extends3.default)({}, headers, _headers),
+            return _ref5(window.fetch(url, (0, _extends3.default)({}, this._options, {
+                body: (0, _stringify2.default)(data)
+            }, options, {
                 method: 'PUT'
-            }).then(function (response) {
+            })).then(function (response) {
                 return handleResponse(response);
             }));
         }
@@ -205,8 +213,7 @@ var request = function () {
         value: function patch() {
             var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
             var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-            var _headers = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+            var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
             function _ref6(_id6) {
                 if (!(_id6 instanceof _promise2.default)) {
@@ -224,23 +231,22 @@ var request = function () {
                 throw new TypeError('Value of argument "data" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(data));
             }
 
-            if (!(_headers instanceof Object)) {
-                throw new TypeError('Value of argument "_headers" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(_headers));
+            if (!(options instanceof Object)) {
+                throw new TypeError('Value of argument "options" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(options));
             }
 
-            return _ref6(fetch(url, {
+            return _ref6(window.fetch(url, (0, _extends3.default)({}, this._options, options, {
                 body: (0, _stringify2.default)(data),
-                headers: (0, _extends3.default)({}, headers, _headers),
                 method: 'PATCH'
-            }).then(function (response) {
+            })).then(function (response) {
                 return handleResponse(response);
             }));
         }
     }]);
-    return request;
+    return _class;
 }();
 
-exports.default = request;
+exports.default = _class;
 
 function _inspect(input, depth) {
     var maxDepth = 4;
