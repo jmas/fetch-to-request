@@ -69,10 +69,10 @@ function handleResponse(response) {
     });
 }
 
-var _class = function () {
-    function _class() {
+var FetchToRequest = function () {
+    function FetchToRequest() {
         var fetchOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-        (0, _classCallCheck3.default)(this, _class);
+        (0, _classCallCheck3.default)(this, FetchToRequest);
 
         if (!(fetchOptions instanceof Object)) {
             throw new TypeError('Value of argument "fetchOptions" violates contract.\n\nExpected:\nObject\n\nGot:\n' + _inspect(fetchOptions));
@@ -83,7 +83,7 @@ var _class = function () {
         }, fetchOptions);
     }
 
-    (0, _createClass3.default)(_class, [{
+    (0, _createClass3.default)(FetchToRequest, [{
         key: 'get',
         value: function get() {
             var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
@@ -243,10 +243,10 @@ var _class = function () {
             }));
         }
     }]);
-    return _class;
+    return FetchToRequest;
 }();
 
-exports.default = _class;
+exports.default = FetchToRequest;
 
 function _inspect(input, depth) {
     var maxDepth = 4;

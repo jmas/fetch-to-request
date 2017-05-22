@@ -23,7 +23,7 @@ export function handleResponse(response: Object): Promise {
     })
 }
 
-export default class {
+export default class FetchToRequest {
     constructor(fetchOptions: Object = {}) {
         this._options = {
             headers,
